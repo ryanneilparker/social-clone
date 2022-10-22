@@ -5,9 +5,10 @@ from django.contrib.auth import get_user_model
 import uuid
 from datetime import datetime
 
+# User model,
 User = get_user_model()
 
-# Create your models here.
+# User profile model.
 class Profile(models.Model):
   user = models.ForeignKey(User, on_delete = models.CASCADE)
   id_user = models.IntegerField()
@@ -18,6 +19,7 @@ class Profile(models.Model):
   def __str__(self):
     return self.user.username
 
+# User posts model.
 class Post(models.Model):
   id = models.UUIDField(primary_key=True, default=uuid.uuid4)
   user = models.CharField(max_length=100)
@@ -29,6 +31,7 @@ class Post(models.Model):
   def __str__(self):
     return self.user
 
+# Post likes model.
 class LikePost(models.Model):
   post_id = models.CharField(max_length=500)
   username = models.CharField(max_length=100)
@@ -36,6 +39,7 @@ class LikePost(models.Model):
   def __str__(self):
     return self.username
 
+# User followers model.
 class FollowersCount(models.Model):
   follower = models.CharField(max_length=100)
   user = models.CharField(max_length=100)

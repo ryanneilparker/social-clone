@@ -28,7 +28,7 @@ def index(request):
 
   feed_list = list(chain(*feed))
 
-  # user suggestion
+  # user suggestions
   all_users = User.objects.all()
   user_following_all = []
 
@@ -53,7 +53,13 @@ def index(request):
 
   suggestions_username_profile_list = list(chain(*username_profile_list))
 
-  return render(request, 'index.html', {'user_profile': user_profile, 'posts': feed_list, 'suggestions_username_profile_list': suggestions_username_profile_list[:4]})
+  context = {
+    'user_profile': user_profile,
+    'posts': feed_list,
+    'suggestions_username_profile_list': suggestions_username_profile_list[:4]
+  }
+
+  return render(request, 'index.html', context)
 
 @login_required(login_url='signin')
 def search(request):
@@ -76,7 +82,12 @@ def search(request):
 
     username_profile_list = list(chain(*username_profile_list))
 
-  return render(request, 'search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
+    context = {
+      'user_profile': user_profile,
+      'username_profile_list': username_profile_list
+    }
+
+  return render(request, 'search.html', context)
 
 @login_required(login_url='signin')
 def upload(request):
