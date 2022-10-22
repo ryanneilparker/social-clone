@@ -14,6 +14,7 @@ An Instagram-like social media website built using the Django Python web framewo
 - View other users profiles
 - View other users posts
 - Search for other users using the search bar
+- Randomly suggests users to follow on homepage
 ### User Created Content
 - Posts images to you profile
 - Add captions to your photos
